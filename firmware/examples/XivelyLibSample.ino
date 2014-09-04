@@ -6,10 +6,8 @@
 // Please refer to LICENSE file for licensing information.
 //********************************************************************
 
-
 // This #include statement was automatically added by the Spark IDE.
 #include "XivelyLib.h"
-
 
 //debug to serial port
 #define UARTDEBUG 1
@@ -19,8 +17,8 @@
 #define APPNAME "XivelyLib\r\nCopyright(c) Davide Gironi, 2014"
 
 //default xively feed and api
-#define XIVELY_FEEDID "1185866697"
-#define XIVELY_APIKEY "DPTFK8GMoS9LXhqIJdqEuM8nko6tve5h6DYBNGWJEyT6iYCx"
+#define XIVELY_FEEDID "000000000"
+#define XIVELY_APIKEY "000000000000000000000000000000000000000000000000"
 
 //xively status led port
 #define XIVELY_STATUSLED_PORT D0
