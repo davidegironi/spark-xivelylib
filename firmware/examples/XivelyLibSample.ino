@@ -7,7 +7,11 @@
 // Please refer to LICENSE file for licensing information.
 //********************************************************************
 
-#include "XivelyLib.h"
+#include "XivelyLib/XivelyLib.h"
+
+//default xively feed and api
+#define XIVELY_FEEDID "000000000"
+#define XIVELY_APIKEY "000000000000000000000000000000000000000000000000"
 
 //debug to serial port
 #define UARTDEBUG 1
@@ -15,10 +19,6 @@
 //application version
 #define APPVERSION "0.1"
 #define APPNAME "XivelyLib\r\nCopyright(c) Davide Gironi, 2014"
-
-//default xively feed and api
-#define XIVELY_FEEDID "000000000"
-#define XIVELY_APIKEY "000000000000000000000000000000000000000000000000"
 
 //xively status led port
 #define XIVELY_STATUSLED_PORT D0
