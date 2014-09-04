@@ -1,7 +1,8 @@
 //********************************************************************
 // XivelyLib for Spark
-// Copyright (c) Davide Gironi, 2014
-// 
+// http://github.com/davidegironi/spark-xivelylib
+// Copyright (c) Davide Gironi, 2014 
+//
 // Released under GPLv3.
 // Please refer to LICENSE file for licensing information.
 //********************************************************************
