@@ -7,7 +7,7 @@
 // Please refer to LICENSE file for licensing information.
 //********************************************************************
 
-#include "XivelyLib/XivelyLib.h"
+#include "XivelyLib.h"
 
 //debug to serial port
 #define UARTDEBUG 1
