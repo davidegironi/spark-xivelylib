@@ -31,6 +31,7 @@ typedef struct xivelyLib_datapoint
 {
     char id[XIVELYLIB_DATAPOINTID_SIZE];
     char value[XIVELYLIB_DATAPOINTVALUE_SIZE];
+    bool enabled;
 } xivelyLib_datapoint;
 
 class XivelyLib

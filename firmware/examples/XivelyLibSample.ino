@@ -33,7 +33,7 @@
 #define SPARK_CONNECTIONINTERVALMIN 5
 
 //sensor1
-#define SENSOR1_PORT D1
+#define SENSOR1_PORT A0
 #define SENSOR1_UPDATETIMERINTERVALMS 10000 //timer to update the reading of this sensor
 //datastream channel
 #define SENSOR1_CHANNEL "1"
@@ -42,7 +42,7 @@ long xivelydatapoint_sensor1tot = 0;
 int xivelydatapoint_sensor1totcount = 0;
 
 //sensor2
-#define SENSOR2_PORT D2
+#define SENSOR2_PORT A1
 #define SENSOR2_UPDATETIMERINTERVALMS 5000 //timer to update the reading of this sensor
 //datastream channel
 #define SENSOR2_CHANNEL "2"
@@ -201,33 +201,40 @@ void xivelyUpdate() {
 	int datapointsIndex = 0;
 	
 	//set the datapoints array
-	xivelyLib_datapoint datapoints[2];
+	xivelyLib_datapoint datapoints[3];
 	for(int i=0; i<sizeof(datapoints)/sizeof(datapoints[0]); i++) {
+	    datapoints[i].enabled = false;
 	    memset(datapoints[i].id, 0, sizeof(datapoints[i].id));
 	    memset(datapoints[i].value, 0, sizeof(datapoints[i].value));
 	}
 	
     //set sensor1 datapoint
-    d = (double)xivelydatapoint_sensor1tot/(double)xivelydatapoint_sensor1totcount;
-    memset(numtemp, 0, sizeof(numtemp));
-	sprintf(numtemp, "%3.1f", d);
-    strncpy(datapoints[datapointsIndex].id, SENSOR1_CHANNEL, strlen(SENSOR1_CHANNEL));
-    strncpy(datapoints[datapointsIndex].value, numtemp, strlen(numtemp));
-    //reset sensor1 readings
-    xivelydatapoint_sensor1tot = 0;
-    xivelydatapoint_sensor1totcount = 0;
+    if(xivelydatapoint_sensor1totcount != 0) {
+        d = (double)xivelydatapoint_sensor1tot/(double)xivelydatapoint_sensor1totcount;
+        memset(numtemp, 0, sizeof(numtemp));
+    	sprintf(numtemp, "%3.1f", d);
+    	datapoints[datapointsIndex].enabled = true;
+        strncpy(datapoints[datapointsIndex].id, SENSOR1_CHANNEL, strlen(SENSOR1_CHANNEL));
+        strncpy(datapoints[datapointsIndex].value, numtemp, strlen(numtemp));
+        //reset sensor1 readings
+        xivelydatapoint_sensor1tot = 0;
+        xivelydatapoint_sensor1totcount = 0;
+    }
     //skip to next datapoints index
     datapointsIndex++;
     
     //set sensor2 datapoint
-    d = (double)xivelydatapoint_sensor2tot/(double)xivelydatapoint_sensor2totcount;
-    memset(numtemp, 0, sizeof(numtemp));
-	sprintf(numtemp, "%3.1f", d);
-    strncpy(datapoints[datapointsIndex].id, SENSOR2_CHANNEL, sizeof(SENSOR2_CHANNEL));
-    strncpy(datapoints[datapointsIndex].value, numtemp, sizeof(numtemp));
-    //reset sensor1 readings
-    xivelydatapoint_sensor2tot = 0;
-    xivelydatapoint_sensor2totcount = 0;
+    if(xivelydatapoint_sensor2totcount) {
+        d = (double)xivelydatapoint_sensor2tot/(double)xivelydatapoint_sensor2totcount;
+        memset(numtemp, 0, sizeof(numtemp));
+    	sprintf(numtemp, "%3.1f", d);
+    	datapoints[datapointsIndex].enabled = true;
+        strncpy(datapoints[datapointsIndex].id, SENSOR2_CHANNEL, sizeof(SENSOR2_CHANNEL));
+        strncpy(datapoints[datapointsIndex].value, numtemp, sizeof(numtemp));
+        //reset sensor1 readings
+        xivelydatapoint_sensor2tot = 0;
+        xivelydatapoint_sensor2totcount = 0;
+    }
     //skip to next datapoints index
     datapointsIndex++;
     

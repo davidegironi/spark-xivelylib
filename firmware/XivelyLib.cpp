@@ -66,20 +66,27 @@ bool XivelyLib::updateDatapoints(xivelyLib_datapoint *datapoints, int size) {
                 client.print("{ ");
                 client.print("\"version\" : \"1.0.0\", ");
                 client.println("\"datastreams\" : [ ");
+                int enableddatatreams = 0;
                 for(int i=0; i<size; i++) {
-                    //set datapoint
-                    client.print("{ ");
-                    client.print("\"id\" : \"");
-                    client.print(datapoints[i].id);
-                    client.print("\",");
-                    client.print("\"current_value\" : \"");
-                    client.print(datapoints[i].value);
-                    client.print("\"");
-                    if(i+1!=size)
-                        client.println("}, ");
-                    else
-                        client.println("} ");
-                    
+                    if(datapoints[i].enabled)
+                        enableddatatreams++;
+                }
+                for(int i=0; i<size; i++) {
+                    if(datapoints[i].enabled) {
+                        //set datapoint
+                        client.print("{ ");
+                        client.print("\"id\" : \"");
+                        client.print(datapoints[i].id);
+                        client.print("\",");
+                        client.print("\"current_value\" : \"");
+                        client.print(datapoints[i].value);
+                        client.print("\"");
+                        if(enableddatatreams > 1)
+                            client.println("}, ");
+                        else
+                            client.println("} ");
+                        enableddatatreams--;
+                    }
                 }
                 client.print("] ");
                 client.println("}");
