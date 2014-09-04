@@ -1,13 +1,12 @@
 //********************************************************************
-// XivelyLib for Spark
+// XivelyLib Sample for Spark
 // Copyright (c) Davide Gironi, 2014
 // 
 // Released under GPLv3.
 // Please refer to LICENSE file for licensing information.
 //********************************************************************
 
-// This #include statement was automatically added by the Spark IDE.
-#include "XivelyLib.h"
+#include "XivelyLib/XivelyLib.h"
 
 //debug to serial port
 #define UARTDEBUG 1
