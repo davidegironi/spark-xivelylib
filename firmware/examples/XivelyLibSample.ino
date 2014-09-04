@@ -201,7 +201,7 @@ void xivelyUpdate() {
 	int datapointsIndex = 0;
 	
 	//set the datapoints array
-	xivelyLib_datapoint datapoints[3];
+	xivelyLib_datapoint datapoints[2];
 	for(int i=0; i<sizeof(datapoints)/sizeof(datapoints[0]); i++) {
 	    datapoints[i].enabled = false;
 	    memset(datapoints[i].id, 0, sizeof(datapoints[i].id));
