@@ -26,8 +26,7 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
-
+Icon
 # Thumbnails
 ._*
 
@@ -39,3 +38,5 @@ tools/config.bat
 tools/compile.bat
 tools/flash.bat
 tools/terminal.bat
+_bank/*
+tools/web/*
