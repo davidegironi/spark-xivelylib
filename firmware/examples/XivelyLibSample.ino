@@ -21,13 +21,13 @@
 #define APPNAME "XivelyLib\r\nCopyright(c) Davide Gironi, 2014"
 
 //xively status led port
-#define XIVELY_STATUSLED_PORT D0
+#define XIVELY_STATUSLED_PORT D7
 
 //reload default values to eeprom
 #define CONFIG_LOADDEFAULT 1
 
 //xively feed update time (seconds)
-#define XIVELY_UPDATETIMERINTERVALSEC 10
+#define XIVELY_UPDATETIMERINTERVALSEC 60
 
 //active connection test time (minutes)
 #define SPARK_CONNECTIONINTERVALMIN 5
@@ -51,6 +51,7 @@ long xivelydatapoint_sensor2tot = 0;
 int xivelydatapoint_sensor2totcount = 0;
 
 //application info
+int ping = 1;
 char appName[64] = APPNAME;
 char appVersion[12] = APPVERSION;
 
@@ -82,6 +83,7 @@ XivelyLib xively(XIVELY_FEEDID, XIVELY_APIKEY);
 void setup()
 {
     //register spark functions and variables
+    Spark.variable("ping", &ping, INT);
     Spark.variable("appName", &appName, STRING);
     Spark.variable("appVersion", &appVersion, STRING);
     Spark.function("feedId", call_setFeedId);
@@ -124,6 +126,9 @@ void loop()
     //do sensor readings
     sensorUpdate();
 
+    //get xively response
+    xively.responseListener();
+    
     //send data to xively
     if (millis()-xivelyUpdateTimer > 1000*XIVELY_UPDATETIMERINTERVALSEC) {
         //debug xively status

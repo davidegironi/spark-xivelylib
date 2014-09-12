@@ -38,8 +38,6 @@ class XivelyLib
 {
     public:
     	XivelyLib(char *feedId, char *apiKey);
-        void setEnabled(bool enabled);
-        bool isEnabled();
         void setFeedId(char *feedId);
         char *getFeedId();
         bool validateFeedId(char *feedId);
@@ -47,12 +45,15 @@ class XivelyLib
         char *getApiKey();
         bool validateApiKey(char *feedId);
         bool isUpdateSuccessful();
-        bool updateDatapoints(xivelyLib_datapoint *datapoints, int size);
+        void updateDatapoints(xivelyLib_datapoint *datapoints, int size);
+        void responseListener();
     private:
-        volatile bool _enabled;
+        TCPClient _client;
+        int _xivelyErrors;
         char _feedId[XIVELYLIB_FEEDID_SIZE];
         char _apiKey[XIVELYLIB_APIKEY_SIZE];
-        volatile bool _isUpdateSuccessful;
+        bool _isUpdateSuccessful;
+        bool _dataSent;
 };
 
 #endif
