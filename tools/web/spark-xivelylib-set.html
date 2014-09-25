@@ -1,0 +1,95 @@
+<!--
+//********************************************************************
+// Web helper for XivelyLib for Spark
+// http://github.com/davidegironi/spark-xivelylib
+// Copyright (c) Davide Gironi, 2014 
+//
+// References:
+//   https://github.com/jflasher/spark-helper
+// 
+// Released under GPLv3.
+// Please refer to LICENSE file for licensing information.
+//********************************************************************
+-->
+
+<!-- require jquery and bootstrap -->
+
+<script type="text/javascript" src="js/spark-xivelylib-set.js"></script>
+
+<style>
+#spark-xivelylib-set .container {
+	margin-top: 20px;
+}
+
+#spark-xivelylib-set .input-group {
+	margin-top:15px;
+}
+
+#spark-xivelylib-set .alert {
+	z-index: 1000;
+}
+</style>
+
+<div class="container" id="spark-xivelylib-set">
+	
+	<div class="alert fade in" id="info-alert" hidden data-spy="affix"></div>
+	<div class="panel panel-default" id="settings-panel">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" href="#settings">
+					Core ID and API Token
+				</a>
+			</h4>
+		</div>
+		<div id="settings" class="panel-collapse collapse in">
+			<div class="panel-body">
+				<p>
+					Visit <a href="https://www.spark.io/build" target="_blank">https://www.spark.io/build</a> to get the <strong>Core ID</strong> of the core to access and your unique <strong>API token</strong>.
+				</p>
+				<div class="input-group">
+					<span class="input-group-addon">Core ID</span>
+					<input type="text" class="form-control" id="core-id" placeholder="Core ID">
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon">API Token</span>
+					<input type="text" class="form-control" id="api-token" placeholder="API Token">
+				</div>
+				<p>
+					<div class="btn-group">
+						<button class="btn btn-success" type="button" id="spark-check">Check</button>
+					</div>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" href="#functions">
+					Xively Settings
+				</a>
+			</h4>
+		</div>
+		<div id="functions" class="panel-collapse collapse in">
+			<div class="panel-body">
+				<p>
+					Input your <a href="https://www.xively.com" target="_blank">Xively</a> <strong>Feed</strong> Id and <strong>API Key</strong>.
+				</p>
+				<div class="input-group">
+					<span class="input-group-addon">Feed ID</span>
+					<input type="text" class="form-control" id="feed-id" placeholder="Feed ID">
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon">API Key</span>
+					<input type="text" class="form-control" id="api-key" placeholder="API Key">
+				</div>
+				<p>
+					<div class="btn-group">
+						<button class="btn btn-success" type="button" id="xively-get">Get</button>
+						<button class="btn btn-success" type="button" id="xively-set">Set</button>
+					</div>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
