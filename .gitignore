@@ -39,3 +39,4 @@ tools/compile.bat
 tools/flash.bat
 tools/terminal.bat
 _bank/*
+pictures/*

@@ -2,6 +2,6 @@
   "name": "XivelyLib",
   "author": "Davide Gironi <davide.gironi@gmail.com>",
   "license": "GPL v3 (http://www.gnu.org/licenses/gpl.html)",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Spark.io to xively.com data logger library."
 }

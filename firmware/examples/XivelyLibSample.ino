@@ -83,13 +83,13 @@ XivelyLib xively(XIVELY_FEEDID, XIVELY_APIKEY);
 void setup()
 {
     //register spark functions and variables
-    Spark.variable("ping", &ping, INT);
-    Spark.variable("appName", &appName, STRING);
-    Spark.variable("appVersion", &appVersion, STRING);
-    Spark.function("feedId", call_setFeedId);
-    Spark.function("apiKey", call_setApiKey);
-    Spark.variable("feedId", &config.xively_feedid, STRING);
-    Spark.variable("apiKey", &config.xively_apikey, STRING);
+    Particle.variable("ping", &ping, INT);
+    Particle.variable("appName", appName, STRING);
+    Particle.variable("appVersion", appVersion, STRING);
+    Particle.function("feedId", call_setFeedId);
+    Particle.function("apiKey", call_setApiKey);
+    Particle.variable("feedId", config.xively_feedid, STRING);
+    Particle.variable("apiKey", config.xively_apikey, STRING);
  
     //start serial port if enabled
     #if UARTDEBUG == 1
@@ -150,8 +150,8 @@ void loop()
     
     //check if the spark connection is active
     if (millis()-sparkConnectionTimer > 1000*60*SPARK_CONNECTIONINTERVALMIN) {
-        if(!Spark.connected()) //reconnect spark
-            Spark.connect();
+        if(!Particle.connected()) //reconnect spark
+            Particle.connect();
         sparkConnectionTimer = millis();
     }
 }
